@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+:root {
+  --background-color-main: #1A1A1D;
+  --element-color-main: #4E4E50;
+  --font-color-main: whitesmoke;
+  --font-color-hover: #B4B4B4;
+  --font-color-logo: #C3073F;
+  --font-color-logo-hover: #950740;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--font-color-main);
+  background-color: var(--background-color-main);
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav {
+  background-color: var(--element-color-main);
+  padding: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--font-color-main);
+  transition: 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--font-color-hover);
+}
+
+.login-container, .register-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 150px auto 0 auto;
+  padding-bottom: 30px;
+  background-color: var(--element-color-main);
+  max-width: 400px;
+  border-radius: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.h1-logo {
+  color: var(--font-color-logo);
+  font-size: 3rem;
+  margin: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.h2-type-of-enter {
+  font-size: 2.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-radius: 30px;
+  padding: 0 7px 0 7px;
+}
+
+.button-enter {
+  height: 30px;
+  padding: 5px 0 5px 0;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--font-color-logo);
+  color: var(--font-color-main);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  transition: 0.2s ease;
+}
+
+.button-enter:hover {
+  background-color: var(--font-color-logo-hover);
+  cursor: pointer;
 }

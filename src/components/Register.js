@@ -11,8 +11,9 @@ function Register() {
     };
 
     return (
-        <div>
-            <h2>Регистрация</h2>
+        <div className="register-container">
+            <h1 className="h1-logo">QuizzWorld</h1>
+            <h2 className="h2-type-of-enter">Регистрация</h2>
             <form onSubmit={handleSubmit}>
                 <input
                   type="email"
@@ -28,7 +29,7 @@ function Register() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <button type="submit">Зарегистрироваться</button>
+                <button type="submit" className="button-enter">Зарегистрироваться</button>
             </form>
         </div>
     );

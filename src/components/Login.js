@@ -11,8 +11,9 @@ function Login() {
     };
 
     return (
-        <div>
-            <h2>Вход</h2>
+        <div className="login-container">
+            <h1 className="h1-logo">QuizzWorld</h1>
+            <h2 className="h2-type-of-enter">Вход</h2>
             <form onSubmit={handleSubmit}>
                 <input
                   type="email"
@@ -28,7 +29,7 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <button type="submit">Войти</button>
+                <button type="submit" className="button-enter">Войти</button>
             </form>
         </div>
     );
