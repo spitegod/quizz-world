@@ -1,13 +1,22 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const navigate = useNavigate();
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Login: ", {email, password});
+        if (email === "admin@admin.ru" && password === "admin") {
+            alert("Вход успешен!");
+            localStorage.setItem("currentUser", JSON.stringify({ email }));
+            navigate("/");
+        } else {
+            alert("Неверная почта или пароль!");
+        }
     };
 
     return (
