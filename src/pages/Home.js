@@ -30,6 +30,9 @@ function Home() {
             <Link to="/create-quiz">
                 <button>Создать викторину</button>
             </Link>
+            <Link to="/play-quiz">
+                <button>Пройти викторину</button>
+            </Link>
             <button onClick={handleLogout}>Выйти</button>
         </div>
     )

@@ -17,6 +17,7 @@ function CreateQuiz() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const quiz = { title, questions };
         localStorage.setItem("currentQuiz", JSON.stringify(quiz));
 
         alert("Викторина создана и сохранена!");
