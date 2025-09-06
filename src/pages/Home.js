@@ -25,15 +25,23 @@ function Home() {
 
     return (
         <div>
-            <h1>Добро пожаловать, {user.email}!</h1>
-            <p>Здесь будут викторины</p>
-            <Link to="/create-quiz">
-                <button>Создать викторину</button>
-            </Link>
-            <Link to="/play-quiz">
-                <button>Пройти викторину</button>
-            </Link>
-            <button onClick={handleLogout}>Выйти</button>
+            <nav>
+                <ul className="ul-homepage">
+                    <li><Link to="/">Главная</Link></li>
+                    <li ><Link to="/login" onClick={handleLogout}>Выйти</Link></li>
+                </ul>
+            </nav>
+        
+            <div className="homepage">
+                <h1>Добро пожаловать, {user.email}!</h1>
+                <p>В будущем здесь будут ваши викторины</p>
+                <Link to="/create-quiz">
+                    <button className="button button-create-quiz">Создать викторину</button>
+                </Link>
+                <Link to="/play-quiz">
+                    <button className="button button-start-quiz">Пройти викторину</button>
+                </Link>
+            </div>
         </div>
     )
 };
