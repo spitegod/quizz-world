@@ -11,12 +11,7 @@ function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li><Link to="/login">Вход</Link></li>
-            <li><Link to="/register">Регистрация</Link></li>
-          </ul>
-        </nav>
+        
 
         <Routes>
           <Route path="/" element={<Home />} />
