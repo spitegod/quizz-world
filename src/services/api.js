@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = '/api';
+// Используем переменную окружения или относительный URL
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 // Создаем экземпляр axios с настройками
 const api = axios.create({
