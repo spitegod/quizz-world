@@ -1,50 +1,89 @@
-import React, { useState } from "react";
-import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Register() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        alert("Регистрация успешна!");
-        localStorage.setItem("currentUser", JSON.stringify({email}));
-        navigate("/")
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    
+    if (password !== confirmPassword) {
+      setError('Пароли не совпадают');
+      return;
+    }
 
-    return (
-        <div>
-            <nav>
-                <ul>
-                    <li><Link to="/login">Вход</Link></li>
-                    <li><Link to="/register">Регистрация</Link></li>
-                </ul>
-            </nav>
-            <div className="register-container">
-                <h1 className="h1-logo">QuizzWorld</h1>
-                <h2 className="h2-type-of-enter">Регистрация</h2>
-                <form onSubmit={handleSubmit}>
-                    <input
-                    type="email"
-                    placeholder="Почта"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    />
-                    <input
-                    type="password"
-                    placeholder="Пароль"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    />
-                    <button type="submit" className="button button-enter">Зарегистрироваться</button>
-                </form>
-            </div>
+    try {
+      const response = await axios.post('/api/auth/register', {
+        username,
+        email,
+        password
+      });
+      
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+        navigate('/');
+      }
+    } catch (err) {
+      setError('Ошибка при регистрации');
+      console.error('Ошибка регистрации:', err);
+    }
+  };
+
+  return (
+    <div className="register-container">
+      <h2>Регистрация</h2>
+      {error && <div className="error-message">{error}</div>}
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Имя пользователя:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
         </div>
-    );
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Пароль:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Подтвердите пароль:</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn">Зарегистрироваться</button>
+      </form>
+      <p>
+        Уже есть аккаунт? <Link to="/login">Войти</Link>
+      </p>
+    </div>
+  );
 }
 
 export default Register;
