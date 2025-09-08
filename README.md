@@ -1,53 +1,72 @@
-# Getting Started with Create React App
+# Quiz World
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Установка и запуск
 
-## Available Scripts
+### Требования
+- Node.js 16.x или новее
+- npm 8.x или новее
 
-In the project directory, you can run:
+### Инструкция по запуску
 
-### `npm start`
+1. **Клонируйте репозиторий**
+   ```bash
+   git clone <ваш-репозиторий>
+   cd quizz-world
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Установите зависимости фронтенда**
+   ```bash
+   npm install
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Установите зависимости бэкенда**
+   ```bash
+   cd backend
+   npm install
+   ```
 
-### `npm test`
+4. **Создайте .env файл**
+   Создайте файл `.env` в папке `backend` с настройками:
+   ```
+   JWT_SECRET=your-secret-key
+   JWT_EXPIRES_IN=24h
+   PORT=5002
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. **Запустите бэкенд** (в отдельном терминале)
+   ```bash
+   cd backend
+   node server.js
+   ```
 
-### `npm run build`
+6. **Запустите фронтенд** (в основном терминале)
+   ```bash
+   npm start
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+7. **Откройте в браузере**
+   - Фронтенд: http://localhost:3000
+   - Бэкенд: http://localhost:5002
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Доступные скрипты
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `npm start` - запуск фронтенда в режиме разработки
+- `npm run build` - сборка для продакшена
+- `npm test` - запуск тестов
 
-### `npm run eject`
+## Структура проекта
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `/src` - исходный код фронтенда
+- `/backend` - исходный код бэкенда
+  - `/controllers` - контроллеры API
+  - `/models` - модели базы данных
+  - `/routes` - маршруты API
+  - `server.js` - точка входа бэкенда
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Технологии
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Фронтенд**: React, React Router, Axios
+- **Бэкенд**: Node.js, Express, SQLite, Sequelize, JWT
 
 ### Analyzing the Bundle Size
 
